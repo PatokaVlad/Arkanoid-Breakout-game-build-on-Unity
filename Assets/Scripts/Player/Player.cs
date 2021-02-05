@@ -101,6 +101,6 @@ public class Player : MonoBehaviour
     private void GameOver(bool stopPlay, bool activeGameOver)
     {
         stopGame = stopPlay;
-        _uiHandler.GameOver(score, activeGameOver);
+        _uiHandler.StopGame(score, activeGameOver);
     }
 }

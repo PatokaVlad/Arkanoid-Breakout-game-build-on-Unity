@@ -27,6 +27,8 @@ public class BallMovement : MonoBehaviour
     private float speed = 4;
     [SerializeField]
     private float bounceMultiplier = 15f;
+    [SerializeField]
+    private float angleNormalizeMultiplier = 25;
 
     private float xEdge = 7.5f;
     private float yEdge = 4f;
@@ -142,14 +144,18 @@ public class BallMovement : MonoBehaviour
     private Vector2 AdjustDirection(Vector2 direction, Vector2 normal, float angleRange)
     {
         float angle = Vector2.SignedAngle(normal, direction);
+        float normalAngle = 90 - angleNormalizeMultiplier;
 
-        if(angle < 0)
+        if (Mathf.Abs(angle) < normalAngle)
         {
-            direction = RotateVector(direction, -Random.Range(angleRange / 2, angleRange));
-        }
-        else
-        {
-            direction = RotateVector(direction, Random.Range(angleRange / 2, angleRange));
+            if(angle < 0)
+            {
+                direction = RotateVector(direction, -Random.Range(angleRange / 2, angleRange));
+            }
+            else
+            {
+                direction = RotateVector(direction, Random.Range(angleRange / 2, angleRange));
+            }
         }
 
         return direction;

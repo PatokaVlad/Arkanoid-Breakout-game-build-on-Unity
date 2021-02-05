@@ -6,6 +6,11 @@ using UnityEngine.UI;
 public class UIHandler : MonoBehaviour
 {
     [SerializeField]
+    private GameObject _startMessage = null;
+    [SerializeField]
+    private float startMessageTime = 3f;
+
+    [SerializeField]
     private Text _scoreText = null;
     [SerializeField]
     private Text _livesText = null;
@@ -14,6 +19,11 @@ public class UIHandler : MonoBehaviour
     private GameObject _gameOver = null;
     [SerializeField]
     private Text _finalScoreText = null;
+
+    private void Start()
+    {
+        StartCoroutine(ShowStartMessage());
+    }
 
     public void ChangeLivesText(int lives)
     {
@@ -25,7 +35,7 @@ public class UIHandler : MonoBehaviour
         _scoreText.text = "Score: " + score.ToString();
     }
 
-    public void GameOver(int score, bool active)
+    public void StopGame(int score, bool active)
     {
         _gameOver.SetActive(active);
 
@@ -33,5 +43,17 @@ public class UIHandler : MonoBehaviour
 
         _livesText.gameObject.SetActive(!active);
         _scoreText.gameObject.SetActive(!active);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    IEnumerator ShowStartMessage()
+    {
+        _startMessage.SetActive(true);
+        yield return new WaitForSeconds(startMessageTime);
+        _startMessage.SetActive(false);
     }
 }
