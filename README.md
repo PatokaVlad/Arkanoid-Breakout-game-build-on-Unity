@@ -1,2 +1,2 @@
 # Arkanoid-Breakout-game-made-with-Unity
-![screenshot](https://github.com/PatokaVlad/Simple-calculator-made-with-Unity/blob/main/Calculator.PNG)
+![screenshot](https://github.com/PatokaVlad/Arkanoid-Breakout-game-made-with-Unity/blob/Patoka_Arkanoid/Arkanoid%20.PNG)
